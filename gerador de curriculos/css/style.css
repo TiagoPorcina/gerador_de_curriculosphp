@@ -1,0 +1,9 @@
+/* Opcional: Estilo de espaçamento básico */
+body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #f8f9fa; /* Fundo cinza claro */
+}
+.curriculo-page {
+    border-radius: 5px;
+}
