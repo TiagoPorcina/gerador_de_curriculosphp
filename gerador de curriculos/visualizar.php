@@ -1,23 +1,19 @@
 <?php
-// PHP: Processamento dos dados para a geração do currículo
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Armazena Experiências na sessão
-    $_SESSION['experiencias'] = $_POST['experiencia'] ?? [];
-    
-    // Adicione a Formação Acadêmica aqui, se você criar um passo para ela.
+    if (isset($_POST['formacao'])) {
+        $_SESSION['formacoes'] = $_POST['formacao'];
+    }
 }
 
-// Junta todos os dados
 $dados = $_SESSION['dados_pessoais'] ?? [];
 $experiencias = $_SESSION['experiencias'] ?? [];
+$formacoes = $_SESSION['formacoes'] ?? [];
 
-// Função de Ajuda para formatação (PHP)
 function formatarData($data) {
     if (empty($data)) return 'Atual';
-    // Formato Brasileiro (opcionalmente pode ser apenas o ano)
-    return date('m/Y', strtotime($data)); 
+    return date('Y', strtotime($data)); 
 }
 ?>
 <!DOCTYPE html>
@@ -36,19 +32,38 @@ function formatarData($data) {
             max-width: 800px; margin: 0 auto; padding: 30px; border: 1px solid #ccc;
         }
         @media print {
-            .acoes, .nav-tabs { display: none !important; } /* Esconde a interface de navegação e botões na impressão/download */
+            .acoes, .nav-tabs { display: none !important; } 
             .curriculo-page { border: none; }
         }
     </style>
 </head>
 <body>
+    <nav class="navbar navbar-dark bg-dark mb-4 shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.php">
+                <img src="img/favicon.ico" alt="Logo do CV Builder" class="d-inline-block align-text-top">
+                <span class="fw-bold text-primary">GERADOR DE CURRÍCULOS</span>
+                <div class="unipar ms-auto">
+                <img src="img/unipar.ico" alt="Símbolo UNIPAR"> 
+            </div>
+            </a>
+        </div>
+    </nav>
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-8 offset-md-2">
-                <h2 class="mb-3">Visualizar Currículo</h2>
-                <p class="text-muted mb-4">Confira como seu currículo ficará e faça o download.</p>
+               <ul class="nav nav-tabs mb-4">
+    <li class="nav-item"><a class="nav-link" href="index.php">Dados Pessoais</a></li>
+    <li class="nav-item"><a class="nav-link" href="experiencia.php">Experiência</a></li>
+    <li class="nav-item"><a class="nav-link" href="formacao.php">Formação</a></li>
+    <li class="nav-item"><a class="nav-link active" href="#">Visualizar</a></li>
+</ul>
+                
+               <h2 class="mb-3">Visualizar Currículo</h2>
+<p class="text-muted mb-4">Confira como seu currículo ficará e faça o download.</p>
 
-                <div class="curriculo-page bg-white shadow-lg mb-4">
+<div class="curriculo-page bg-gray shadow-lg mb-4">
+   
                     
                     <h1 class="text-primary border-bottom pb-2"><?php echo $dados['nome'] ?? 'Nome do Candidato'; ?></h1>
                     <p class="mb-1">📧 <?php echo $dados['email'] ?? 'email@exemplo.com'; ?></p>
@@ -65,20 +80,35 @@ function formatarData($data) {
                                     <?php echo (isset($exp['atual']) && $exp['atual'] == 1) ? 'Atual' : formatarData($exp['fim']); ?>
                                 </p>
                                 <p class="small"><?php echo $exp['descricao'] ?? 'Descrição das atividades...'; ?></p>
-                            </div>
+                            </div> </div>
                         <?php endforeach; ?>
                     <?php else: ?>
                          <p>Nenhuma experiência adicionada.</p>
                     <?php endif; ?>
 
                     <h3 class="mt-4 border-bottom pb-1">Formação Acadêmica</h3>
-                    <p class="mb-1">Ciência da Computação</p>
-                    <p class="text-muted small">Universidade de São Paulo | 2019-2023</p>
+                    <?php if (!empty($formacoes)): ?>
+                        <?php foreach ($formacoes as $formacao): ?>
+                            <div class="mb-3">
+                                <h5><?php echo $formacao['curso'] ?? 'Curso'; ?></h5>
+                                <p class="mb-1"><?php echo $formacao['instituicao'] ?? 'Instituição'; ?></p>
+                                <p class="text-muted small">
+                                    <?php echo formatarData($formacao['inicio']); ?> - 
+                                    <?php echo (isset($formacao['cursando']) && $formacao['cursando'] == 1) ? 'Cursando' : formatarData($formacao['fim']); ?>
+                                </p>
+                                <?php if (!empty($formacao['descricao'])): ?>
+                                    <p class="small fst-italic"><?php echo $formacao['descricao']; ?></p>
+                                <?php endif; ?>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <p>Nenhuma formação acadêmica adicionada.</p>
+                    <?php endif; ?>
 
                 </div>
 
                 <div class="acoes d-flex justify-content-between mb-5">
-                    <a href="experiencia.php" class="btn btn-secondary">Voltar</a>
+                    <a href="formacao.php" class="btn btn-secondary">Voltar</a>
                     <button onclick="baixarCurriculo()" class="btn btn-success">Baixar PDF / Imprimir</button>
                 </div>
                 

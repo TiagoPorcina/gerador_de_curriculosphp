@@ -1,13 +1,13 @@
 <?php
-// PHP: Recebe dados da tela anterior e armazena na sessão
+// PHP: Recebe dados da tela anterior (pessoais) e armazena na sessão
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Validação e armazenamento dos Dados Pessoais na sessão
+    // Armazena Dados Pessoais na sessão
     $_SESSION['dados_pessoais'] = $_POST;
 }
 
-// Se não houver dados, idealmente redireciona de volta para index.php
+// Se não houver dados, redireciona de volta para index.php (com validação básica)
 if (empty($_SESSION['dados_pessoais']) && $_SERVER['REQUEST_METHOD'] === 'GET') {
      // header('Location: index.php');
      // exit;
@@ -25,19 +25,31 @@ if (empty($_SESSION['dados_pessoais']) && $_SERVER['REQUEST_METHOD'] === 'GET') 
     <link rel="stylesheet" href="css/style.css"> 
 </head>
 <body>
+   <nav class="navbar navbar-dark bg-dark mb-4 shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.php">
+                <img src="img/favicon.ico" alt="Logo do CV Builder" class="d-inline-block align-text-top">
+                <span class="fw-bold text-primary">GERADOR DE CURRÍCULOS</span>
+                <div class="unipar ms-auto">
+                <img src="img/unipar.ico" alt="Símbolo UNIPAR"> 
+            </div>
+            </a>
+        </div>
+    </nav>
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-8 offset-md-2">
-                <ul class="nav nav-tabs mb-4">
-                    <li class="nav-item"><a class="nav-link" href="index.php">Dados Pessoais</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="#">Experiência</a></li>
-                    <li class="nav-item"><a class="nav-link disabled" href="#">Visualizar</a></li>
-                </ul>
-
+                
+               <ul class="nav nav-tabs mb-4">
+    <li class="nav-item"><a class="nav-link" href="index.php">Dados Pessoais</a></li>
+    <li class="nav-item"><a class="nav-link active" href="#">Experiência</a></li>
+    <li class="nav-item"><a class="nav-link" href="formacao.php">Formação</a></li> 
+    <li class="nav-item"><a class="nav-link disabled" href="#">Visualizar</a></li>
+</ul>
                 <h2 class="mb-3">Experiência Profissional</h2>
                 <p class="text-muted mb-4">Adicione suas experiências profissionais mais relevantes.</p>
 
-                <form action="visualizar.php" method="POST">
+                <form action="formacao.php" method="POST">
                     
                     <div id="experiencias_container">
                         <div class="card p-4 mb-4 experiencia-bloco" data-id="1">
@@ -79,7 +91,7 @@ if (empty($_SESSION['dados_pessoais']) && $_SERVER['REQUEST_METHOD'] === 'GET') 
 
                     <div class="d-flex justify-content-between mt-4">
                         <a href="index.php" class="btn btn-secondary">Voltar</a>
-                        <button type="submit" class="btn btn-primary">Próximo: Visualizar Currículo &rarr;</button>
+                        <button type="submit" class="btn btn-primary">Próximo: Formação &rarr;</button>
                     </div>
                 </form>
 

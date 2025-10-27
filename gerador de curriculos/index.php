@@ -1,5 +1,4 @@
 <?php
-// Inicia a sessão para futura transferência de dados
 session_start();
 ?>
 <!DOCTYPE html>
@@ -13,19 +12,32 @@ session_start();
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
           crossorigin="anonymous">
           
-    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-    <div class="container mt-5">
+<nav class="navbar navbar-dark bg-dark mb-4 shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.php">
+                <img src="img/favicon.ico" alt="Logo do CV Builder" class="d-inline-block align-text-top">
+                <span class="fw-bold text-primary">GERADOR DE CURRÍCULOS</span>
+                <div class="unipar ms-auto">
+                <img src="img/unipar.ico" alt="Símbolo UNIPAR"> 
+            </div>
+            </a>
+        </div>
+    </nav>
+    
+    
+    <div class="container">
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 
-                <ul class="nav nav-tabs mb-4">
-                    <li class="nav-item"><a class="nav-link active" href="#">Dados Pessoais</a></li>
-                    <li class="nav-item"><a class="nav-link disabled" href="#">Experiência</a></li>
-                    <li class="nav-item"><a class="nav-link disabled" href="#">Visualizar</a></li>
-                </ul>
+            <ul class="nav nav-tabs mb-4">
+    <li class="nav-item"><a class="nav-link active" href="#">Dados Pessoais</a></li>
+    <li class="nav-item"><a class="nav-link" href="experiencia.php">Experiência</a></li> 
+    <li class="nav-item"><a class="nav-link disabled" href="formacao.php">Formação</a></li>
+    <li class="nav-item"><a class="nav-link disabled" href="#">Visualizar</a></li>
+</ul>
 
                 <h2 class="mb-3">Dados Pessoais</h2>
                 <p class="text-muted mb-4">Preencha suas informações básicas para começar seu currículo.</p>
