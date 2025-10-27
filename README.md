@@ -1,4 +1,6 @@
 # 🚀 Gerador de Currículos Online (APO - Fundamentos de Programação para Internet)Gerador de Currículos Online desenvolvido como Atividade 
+aluno:*Tiago Porcina Ferreira*
+R.A:09055641
 
 Visão Geral:
 
