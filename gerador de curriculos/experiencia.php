@@ -1,16 +1,12 @@
 <?php
-// PHP: Recebe dados da tela anterior (pessoais) e armazena na sessão
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Armazena Dados Pessoais na sessão
     $_SESSION['dados_pessoais'] = $_POST;
 }
 
-// Se não houver dados, redireciona de volta para index.php (com validação básica)
 if (empty($_SESSION['dados_pessoais']) && $_SERVER['REQUEST_METHOD'] === 'GET') {
-     // header('Location: index.php');
-     // exit;
+     
 }
 ?>
 <!DOCTYPE html>

@@ -1,17 +1,12 @@
 <?php
-// PHP: Recebe dados da tela anterior (experiência) e armazena na sessão
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['experiencia'])) {
-    // Armazena Experiências na sessão
     $_SESSION['experiencias'] = $_POST['experiencia'];
 }
 
-// Se não houver dados pessoais na sessão, pode-se redirecionar para o início
 if (empty($_SESSION['dados_pessoais']) && $_SERVER['REQUEST_METHOD'] === 'GET') {
-     // header('Location: index.php');
-     // exit;
-}
+     
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

@@ -1,6 +1,4 @@
-/* ---------------------------------------------------------------------- */
-/* ESTILOS GLOBAIS - MODO DARK */
-/* ---------------------------------------------------------------------- */
+
 @font-face{
   font-family: "stencilia";
   src: 
@@ -20,24 +18,17 @@ body {
     background-color: transparent !important;
 }
 
-/* Altera a cor de fundo de elementos de formulário e a cor do texto digitado */
 .form-control, .form-control:focus {
     background-color: #333333 !important; 
     color: #f8f9fa !important; /* Cor do texto digitado */
     border-color: #555555 !important;
 }
 
-/* ---------------------------------------------------------------------- */
-/* CORREÇÃO DA NAVBAR E ESTILOS DA LOGO */
-/* ---------------------------------------------------------------------- */
-
-/* Navbar em cinza escuro. Usamos .navbar.bg-dark para sobrepor seletivamente o Bootstrap. */
 .navbar.bg-dark {
     background-color: #212121 !important; 
     border-bottom: 1px solid #444;
 }
 
-/* Define a navbar-brand como flex container para alinhar verticalmente */
 .navbar-brand {
     display: flex !important;
     align-items: center; 
@@ -53,42 +44,34 @@ body {
 
 }
 
-/* Estilos para o texto "CV Builder" (o span) */
 .navbar-brand span {
     font-size: 1.5rem; 
-    color: #f8f9fa !important; /* Garante que o texto seja claro */
+    color: #f8f9fa !important; 
 }
 
-/* ---------------------------------------------------------------------- */
-/* CORREÇÃO DO PLACEHOLDER (Texto cinza dentro do campo) */
-/* ---------------------------------------------------------------------- */
-
-/* Seletor específico para mudar a cor do placeholder em todos os navegadores */
 .form-control::placeholder {
-    color: #ffffff !important; /* Placeholder BRANCO */
-    opacity: 0.6; /* Deixa-o um pouco transparente para não confundir com o texto digitado */
+    color: #ffffff !important; 
+    opacity: 0.6; 
 }
-.form-control::-webkit-input-placeholder { /* Webkit browsers (Chrome, Safari) */
+.form-control::-webkit-input-placeholder { 
     color: #ffffff !important;
     opacity: 0.6;
 }
-.form-control:-moz-placeholder { /* Firefox 18- */
+.form-control:-moz-placeholder { 
     color: #ffffff !important;
     opacity: 0.6;
 }
-.form-control::-moz-placeholder { /* Firefox 19+ */
+.form-control::-moz-placeholder { 
     color: #ffffff !important;
     opacity: 0.6;
 }
-.form-control:-ms-input-placeholder { /* IE */
+.form-control:-ms-input-placeholder {
     color: #ffffff !important;
     opacity: 0.6;
 }
 
 
-/* ---------------------------------------------------------------------- */
-/* ESTILOS DE NAVEGAÇÃO E CARDS (Permanecem inalterados) */
-/* ---------------------------------------------------------------------- */
+
 
 .nav-tabs {
     border-bottom: 1px solid #444;
@@ -111,13 +94,8 @@ body {
     color: #aaaaaa !important;
 }
 
-/* ---------------------------------------------------------------------- */
-/* REGRAS DE IMPRESSÃO (@media print) */
-/* ---------------------------------------------------------------------- */
 
-/* Esconde TODOS os elementos da interface (navbar, abas, botões, títulos de tela) */
 @media print {
-    /* Esconde a barra de navegação principal */
     .navbar {
         display: none !important;
     }
@@ -127,30 +105,25 @@ body {
         display: none !important;
     }
     
-    /* Esconde os botões de ação na tela de visualização */
     .acoes {
         display: none !important;
     }
     
-    /* Esconde títulos de tela e parágrafos de instrução que não fazem parte do CV */
     h2, p.text-muted, p.form-text {
         display: none !important;
     }
 
-    /* MODO IMPRESSÃO: Garante que o fundo seja BRANCO e o texto PRETO */
     body, .curriculo-page, .form-control {
         background-color: #ffffff !important;
         color: #000000 !important;
         border: none !important;
     }
     
-    /* Zera margens e paddings para impressão */
     body {
         padding: 0 !important;
         margin: 0 !important;
     }
     
-    /* Remove a borda e sombras da visualização, e garante que o currículo ocupe a largura total */
     .curriculo-page { 
         border: none !important;
         box-shadow: none !important;
@@ -158,16 +131,13 @@ body {
         width: 100% !important;
         max-width: none !important;
         
-        /* O conteúdo do currículo deve ter cor preta */
         color: #000000 !important;
     }
 
-    /* Garante que todos os textos dentro do currículo fiquem pretos, incluindo os "text-muted" */
     .curriculo-page * {
         color: #000000 !important;
     }
     
-    /* Remove espaçamento vertical indesejado que possa sobrar */
     .container {
         padding: 0 !important;
         margin: 0 !important;
@@ -180,7 +150,7 @@ body {
     }
 }
 .unipar img {
-    height: 80px !important; /* Altura de 80px conforme solicitado */
+    height: 80px !important; 
     width: auto;
     padding-left:770px ;
 }
